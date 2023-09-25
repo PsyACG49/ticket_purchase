@@ -1,0 +1,147 @@
+.section__ticketPurchase {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--white);
+  padding-top: 250px;
+  margin-bottom: 250px;
+}
+
+.section__ticketPurchase .container__ticketPurchase {
+  width: 100%;
+  max-width: 570px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.container__ticketPurchase .ticketPurchase__image {
+  width: 350px;
+  height: 350px;
+  background: var(--primary);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  border-radius: 50%;
+}
+
+.ticketPurchase__image .image__img {
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+}
+
+.container__ticketPurchase .ticketPurchase__title {
+  font-size: 5rem;
+  margin-bottom: 50px;
+  font-weight: 700;
+  text-align: center;
+  color: var(--primary);
+}
+
+.container__ticketPurchase .ticketPurchase__title-2 {
+  color: var(--white);
+  font-weight: 400;
+}
+
+.container__ticketPurchase .ticketPurchase__form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 20px;
+}
+
+.ticketPurchase__form .form__section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.form__section label {
+  font-size: 2.5rem;
+}
+
+.form__section input,
+.form__section select {
+  width: 250px;
+  height: 30px;
+  border-radius: 10px;
+  padding: 0 10px;
+}
+
+.ticketPurchase__form .form__counter {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.form__counter .counter__title {
+  font-size: 2.5rem;
+}
+
+.form__counter .counter__container {
+  display: flex;
+  background: #f7f7f7;
+  border-radius: 5px;
+}
+
+.counter__container .counter__less,
+.counter__container .counter__count,
+.counter__container .counter__more {
+  width: 30px;
+  height: 30px;
+  color: #282c34;
+  font-size: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.counter__container .counter__less,
+.counter__container .counter__more {
+  cursor: pointer;
+}
+
+.counter__container .counter__count {
+  border-left: 1px solid #000;
+  border-right: 1px solid #000;
+}
+
+.ticketPurchase__form .form__btn {
+  width: 150px;
+  padding: 15px 0;
+  border-radius: 30px;
+  font-size: 2rem;
+  cursor: pointer;
+  align-self: center;
+}
+
+.form__price {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.form__price .price__cost {
+  font-size: 1.7rem;
+}
+
+.form__price .price__total {
+  font-size: 3rem;
+}
+
+@media screen and (min-width: 780px) {
+  .section__ticketPurchase {
+    padding-top: 150px;
+    margin-bottom: 50px;
+  }
+}

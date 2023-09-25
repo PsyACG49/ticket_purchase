@@ -1,0 +1,98 @@
+.section__contact {
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 100px;
+}
+
+.container__contact {
+  width: 100%;
+  max-width: 900px;
+  padding: 40px 20px;
+  background: var(--primary);
+}
+
+.container__contact .contact__title {
+  text-align: center;
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--white);
+}
+
+.container__contact .contact__subtitle {
+  font-size: 1.7rem;
+  color: var(--white);
+  text-align: center;
+}
+
+.container__contact .contact__main {
+  width: 100%;
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 50px;
+}
+
+.contact__main .main__image {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--white);
+}
+
+.main__image .image__img {
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+}
+
+.contact__main .main__form {
+  width: 100%;
+  max-width: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.main__form label,
+.main__form input,
+.main__form textarea {
+  width: 100%;
+}
+
+.main__form input {
+  height: 30px;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.main__form textarea {
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.main__form .form__btn {
+  padding: 15px 30px;
+  border-radius: 30px;
+  color: var(--primary);
+  background: var(--white);
+  font-size: 1.5rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.container__contact .contact__success {
+  text-align: center;
+  color: var(--white);
+  font-size: 2rem;
+  display: none;
+}

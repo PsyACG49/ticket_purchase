@@ -1,0 +1,130 @@
+.section__header {
+  width: 100%;
+  height: 95px;
+  background: var(--black-dg);
+  position: fixed;
+  z-index: 99;
+}
+
+.section__header .container__header {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.container__header .header__logo {
+  width: auto;
+  height: auto;
+}
+
+.header__logo .logo__image {
+  width: 200px;
+}
+
+.container__header .header__nav {
+  position: absolute;
+  top: 95px;
+  right: 0;
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background: var(--black-dg);
+  clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+  transition: clip-path 1s ease;
+}
+
+.header__nav .nav__list {
+  width: 100%;
+  text-align: center;
+}
+
+.nav__list .list__item {
+  padding: 15px 0;
+}
+
+.list__item .item__link {
+  font-size: 1.7rem;
+  color: var(--white);
+  transition: all 0.5s ease;
+}
+
+.list__item .item__link:hover {
+  color: var(--primary);
+}
+
+.header__nav .nav__socilas {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+
+.nav__socilas .socials__item {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
+  border-radius: 50%;
+  color: var(--white);
+  border: 2px solid var(--white);
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+
+.nav__socilas .socials__item:hover {
+  color: var(--primary);
+  border: 2px solid var(--primary);
+}
+
+.container__header .header__btnMenu {
+  color: var(--white);
+  font-size: 3rem;
+  width: 45px;
+  height: 45px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  border: 2px solid var(--white);
+  cursor: pointer;
+}
+
+.container__header .showMenu {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+
+@media screen and (min-width: 780px) {
+  .container__header .header__nav {
+    width: auto;
+    position: static;
+    flex-direction: row;
+    clip-path: none;
+    background: transparent;
+  }
+
+  .container__header .header__btnMenu {
+    display: none;
+  }
+
+  .header__nav .nav__list {
+    display: flex;
+    gap: 20px;
+  }
+
+  .header__nav .nav__socilas {
+    gap: 10px;
+  }
+
+  .nav__socilas .socials__item {
+    width: 45px;
+    height: 45px;
+    font-size: 2rem;
+  }
+}
