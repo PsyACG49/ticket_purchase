@@ -1,8 +1,8 @@
-import { FaMapLocationDot } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 import IMG from "../../assets/teaching.svg";
 
 import "./masterclass.css";
-import { Link } from "react-router-dom";
+import LocationCard from "../locationCard/LocationCard";
 
 const Masterclass = () => {
   return (
@@ -35,43 +35,15 @@ const Masterclass = () => {
           </i>
         </h3>
         <div className="schedules__list">
-          <article className="schedule">
-            <FaMapLocationDot className="schedule__icon" />
-            <p className="schedule__state">
-              <i>MONTERREY</i>
-            </p>
-            <p className="schedule__date">12/10/22</p>
-            <p className="schedule__address">torreto 44 col. Alvaro obregon</p>
-          </article>
-          <article className="schedule">
-            <FaMapLocationDot className="schedule__icon" />
-            <p className="schedule__state">
-              <i>MONTERREY</i>
-            </p>
-            <p className="schedule__date">12/10/22</p>
-            <p className="schedule__address">torreto 44 col. Alvaro obregon</p>
-          </article>
-          <article className="schedule">
-            <FaMapLocationDot className="schedule__icon" />
-            <p className="schedule__state">
-              <i>MONTERREY</i>
-            </p>
-            <p className="schedule__date">12/10/22</p>
-            <p className="schedule__address">torreto 44 col. Alvaro obregon</p>
-          </article>
-          <article className="schedule">
-            <FaMapLocationDot className="schedule__icon" />
-            <p className="schedule__state">
-              <i>MONTERREY</i>
-            </p>
-            <p className="schedule__date">12/10/22</p>
-            <p className="schedule__address">torreto 44 col. Alvaro obregon</p>
-          </article>
+          <LocationCard />
+          <LocationCard />
+          <LocationCard />
+          <LocationCard />
         </div>
 
         <div className="masterclass__get">
           <span className="get__registertxt">
-            No lo pienses mas, paga y registrate a tu masterclass{" "}
+            No lo pienses mas, registrate y paga tu masterclass{" "}
           </span>
           <Link to="/checkout" className="get__btn">
             OBTENER

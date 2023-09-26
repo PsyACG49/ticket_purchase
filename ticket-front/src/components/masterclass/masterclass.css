@@ -81,41 +81,6 @@
   gap: 20px;
 }
 
-.schedule {
-  width: 300px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  padding: 20px;
-  border: 2px solid var(--primary);
-  border-radius: 15px;
-}
-
-.schedule .schedule__icon {
-  color: var(--primary);
-  font-size: 5rem;
-}
-
-.schedule .schedule__state {
-  font-size: 2rem;
-  text-align: center;
-  color: var(--white);
-  font-weight: 700;
-}
-
-.schedule .schedule__date {
-  color: var(--white);
-  font-size: 1.7rem;
-  font-weight: 700;
-}
-
-.schedule .schedule__address {
-  color: var(--white);
-  font-size: 1.2rem;
-}
-
 .masterclasss__schedules .masterclass__get {
   display: flex;
   justify-content: center;

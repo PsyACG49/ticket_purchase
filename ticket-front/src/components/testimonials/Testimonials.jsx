@@ -1,10 +1,14 @@
-import { TbMessage2Heart } from "react-icons/tb";
-import { AiFillStar } from "react-icons/ai";
+import TestimonialCard from "../testimonialCard/TestimonialCard";
+import { Swiper, SwiperSlide } from "swiper/react";
 
-import USER from "../../assets/user.jpg";
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/pagination";
+
 import IMG from "../../assets/img4.jpg";
-
 import "./testimonials.css";
+
+import { Pagination, Autoplay } from "swiper/modules";
 
 const Testimonials = () => {
   return (
@@ -17,27 +21,27 @@ const Testimonials = () => {
       </p>
       <div className="container__testimonials">
         <div className="testimonials__slider">
-          <article className="cardTest">
-            <img src={USER} alt="usuario posando" className="cardTest__image" />
-            <TbMessage2Heart className="cardTest__icon" />
-            <p className="cardTest__text">
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Harum
-              dolores, sapiente saepe repellendus id
-            </p>
-
-            <div className="cardTest__sec">
-              <p className="sec__useName">
-                <i>User Name</i>
-              </p>
-              <div className="sec__ranking">
-                <AiFillStar />
-                <AiFillStar />
-                <AiFillStar />
-                <AiFillStar />
-                <AiFillStar />
-              </div>
-            </div>
-          </article>
+          <Swiper
+            pagination={{
+              clickable: true,
+            }}
+            autoplay={{
+              delay: 2500,
+              disableOnInteraction: false,
+            }}
+            modules={[Pagination, Autoplay]}
+            className="slider__container"
+          >
+            <SwiperSlide>
+              <TestimonialCard />
+            </SwiperSlide>
+            <SwiperSlide>
+              <TestimonialCard />
+            </SwiperSlide>
+            <SwiperSlide>
+              <TestimonialCard />
+            </SwiperSlide>
+          </Swiper>
         </div>
         <div className="testimonials__image">
           <img

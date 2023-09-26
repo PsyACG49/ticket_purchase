@@ -1,5 +1,5 @@
-import { FaMusic } from "react-icons/fa";
 import IMG from "../../assets/ilustration.svg";
+import CourseCard from "../courseCard/CourseCard";
 import "./courses.css";
 
 const Courses = () => {
@@ -21,30 +21,9 @@ const Courses = () => {
           />
         </div>
         <div className="courses__list">
-          <article className="course">
-            <FaMusic className="course__icon" />
-            <div className="course__line"></div>
-            <h4 className="course__title">TITLE</h4>
-            <p className="course__description">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit
-            </p>
-          </article>
-          <article className="course">
-            <FaMusic className="course__icon" />
-            <div className="course__line"></div>
-            <h4 className="course__title">TITLE</h4>
-            <p className="course__description">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit
-            </p>
-          </article>
-          <article className="course">
-            <FaMusic className="course__icon" />
-            <div className="course__line"></div>
-            <h4 className="course__title">TITLE</h4>
-            <p className="course__description">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit
-            </p>
-          </article>
+          <CourseCard />
+          <CourseCard />
+          <CourseCard />
         </div>
       </div>
     </section>
