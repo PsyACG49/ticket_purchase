@@ -48,7 +48,6 @@ export const createWebhook = async (request, response) => {
       const line_items = await stripe.checkout.sessions.listLineItems(
         event.data.object.id
       );
-
       console.log(line_items);
     }
   } catch (err) {
