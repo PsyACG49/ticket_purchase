@@ -1,0 +1,20 @@
+[
+  {
+    "id": "CO000001",
+    "name": "Course 1",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit",
+    "link": "https://www.dropbox.com/scl/fo/a26h6faesetktnkyt3x25/h/Curso%20Con%20Salo%20Loyo/Intermedios%20a%20avanzados?dl=0&subfolder_nav_tracking=1"
+  },
+  {
+    "id": "CO000002",
+    "name": "Course 2",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit",
+    "link": "https://www.dropbox.com/scl/fo/a26h6faesetktnkyt3x25/h/Curso%20Con%20Salo%20Loyo/Intermedios%20a%20avanzados?dl=0&subfolder_nav_tracking=1"
+  },
+  {
+    "id": "CO000003",
+    "name": "Course 3",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit",
+    "link": "https://www.dropbox.com/scl/fo/a26h6faesetktnkyt3x25/h/Curso%20Con%20Salo%20Loyo/Intermedios%20a%20avanzados?dl=0&subfolder_nav_tracking=1"
+  }
+]

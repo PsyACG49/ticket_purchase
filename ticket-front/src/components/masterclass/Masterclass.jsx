@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom";
+import LocationCard from "../locationCard/LocationCard";
+
+import DATES from "../../utils/locations.json";
 import IMG from "../../assets/teaching.svg";
 
 import "./masterclass.css";
-import LocationCard from "../locationCard/LocationCard";
 
 const Masterclass = () => {
   return (
@@ -35,10 +37,9 @@ const Masterclass = () => {
           </i>
         </h3>
         <div className="schedules__list">
-          <LocationCard />
-          <LocationCard />
-          <LocationCard />
-          <LocationCard />
+          {DATES.map((el) => (
+            <LocationCard key={el.id} dataLocation={el} />
+          ))}
         </div>
 
         <div className="masterclass__get">

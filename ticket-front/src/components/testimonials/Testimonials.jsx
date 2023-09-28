@@ -5,6 +5,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 
+import TESTIM from "../../utils/testimonials.json";
+
 import IMG from "../../assets/img4.jpg";
 import "./testimonials.css";
 
@@ -32,15 +34,11 @@ const Testimonials = () => {
             modules={[Pagination, Autoplay]}
             className="slider__container"
           >
-            <SwiperSlide>
-              <TestimonialCard />
-            </SwiperSlide>
-            <SwiperSlide>
-              <TestimonialCard />
-            </SwiperSlide>
-            <SwiperSlide>
-              <TestimonialCard />
-            </SwiperSlide>
+            {TESTIM.map((el) => (
+              <SwiperSlide key={el.id}>
+                <TestimonialCard testimonialData={el} />
+              </SwiperSlide>
+            ))}
           </Swiper>
         </div>
         <div className="testimonials__image">

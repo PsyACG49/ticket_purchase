@@ -1,5 +1,8 @@
-import IMG from "../../assets/ilustration.svg";
 import CourseCard from "../courseCard/CourseCard";
+
+import COURSES from "../../utils/courses.json";
+import IMG from "../../assets/ilustration.svg";
+
 import "./courses.css";
 
 const Courses = () => {
@@ -21,9 +24,9 @@ const Courses = () => {
           />
         </div>
         <div className="courses__list">
-          <CourseCard />
-          <CourseCard />
-          <CourseCard />
+          {COURSES.map((el) => (
+            <CourseCard key={el.id} courseData={el} />
+          ))}
         </div>
       </div>
     </section>

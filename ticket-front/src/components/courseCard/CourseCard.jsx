@@ -1,15 +1,18 @@
-import { FaMusic } from "react-icons/fa";
+import { MdMovieFilter } from "react-icons/md";
+import { FiDownload } from "react-icons/fi";
 import "./courseCard.css";
 
-const CourseCard = () => {
+const CourseCard = ({ courseData }) => {
+  const { name, description, link } = courseData;
   return (
     <article className="course">
-      <FaMusic className="course__icon" />
+      <MdMovieFilter className="course__icon" />
       <div className="course__line"></div>
-      <h4 className="course__title">TITLE</h4>
-      <p className="course__description">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit
-      </p>
+      <h4 className="course__title">{name}</h4>
+      <p className="course__description">{description}</p>
+      <a href={link} className="course__download" target="blank">
+        <FiDownload />
+      </a>
     </article>
   );
 };

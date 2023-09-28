@@ -1,0 +1,62 @@
+[
+  {
+    "id": "LOC000001",
+    "location": "monterrey",
+    "date": "12/11/23",
+    "price": 1000
+  },
+  {
+    "id": "LOC000002",
+    "location": "cdmx",
+    "date": "23/11/23",
+    "price": 2000
+  },
+  {
+    "id": "LOC000003",
+    "location": "cdmx",
+    "date": "26/11/23",
+    "price": 2500
+  },
+  {
+    "id": "LOC000004",
+    "location": "queretaro",
+    "date": "29/11/23",
+    "price": 1500
+  },
+  {
+    "id": "LOC000005",
+    "location": "aguascalientes",
+    "date": "01/12/23",
+    "price": 2000
+  },
+  {
+    "id": "LOC000006",
+    "location": "san luis potsi",
+    "date": "03/12/23",
+    "price": 2000
+  },
+  {
+    "id": "LOC000007",
+    "location": "puebla",
+    "date": "08/12/23",
+    "price": 2000
+  },
+  {
+    "id": "LOC000008",
+    "location": "oaxaca",
+    "date": "10/12/23",
+    "price": 2000
+  },
+  {
+    "id": "LOC000009",
+    "location": "veracruz",
+    "date": "12/12/23",
+    "price": 2000
+  },
+  {
+    "id": "LOC000010",
+    "location": "guadalajara",
+    "date": "18/12/23",
+    "price": 2000
+  }
+]

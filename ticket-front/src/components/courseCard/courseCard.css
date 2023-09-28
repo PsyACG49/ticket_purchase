@@ -3,6 +3,7 @@
   width: 300px;
   padding: 35px 30px;
   border-radius: 10px;
+  position: relative;
 }
 
 .course .course__icon {
@@ -27,4 +28,12 @@
 
 .course .course__description {
   font-size: 1.5rem;
+}
+
+.course .course__download {
+  font-size: 3rem;
+  color: var(--primary);
+  position: absolute;
+  top: 35px;
+  right: 30px;
 }

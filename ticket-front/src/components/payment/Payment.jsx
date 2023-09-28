@@ -1,5 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { manageDataLocations } from "../../utils/form";
 
+import DATA from "../../utils/locations.json";
 import IMG from "../../assets/img6.jpg";
 
 import "./payment.css";
@@ -15,31 +17,9 @@ const initialForm = {
   price: 0,
 };
 
-const data = [
-  {
-    locacion: "Quintana Roo",
-    dias: ["20-mar", "21-mar", "22-mar"],
-    price: 2000,
-  },
-  {
-    locacion: "Aguascalientes",
-    dias: ["20-abr", "21-abr", "22-abr"],
-    price: 2000,
-  },
-  {
-    locacion: "Guadalajara",
-    dias: ["20-sep", "21-sep", "22-sep"],
-    price: 2500,
-  },
-  {
-    locacion: "Merida",
-    dias: ["20-ene", "21-ene", "22-ene"],
-    price: 2000,
-  },
-];
-
 const Payment = () => {
   const [form, setForm] = useState(initialForm);
+  const [location, setLocation] = useState([]);
   const [dates, setDates] = useState([]);
 
   const handleSubmit = async (e) => {
@@ -58,12 +38,21 @@ const Payment = () => {
 
   const handleChange = (e) => {
     if (e.target.name === "locacion") {
-      const currentDates = data.find((el) => el.locacion === e.target.value);
-      console.log(currentDates);
-      setDates(currentDates.dias);
+      const currentDates = location.find(
+        (el) => el.location === e.target.value
+      );
+      setDates(currentDates.info.map((el) => el.date));
       setForm({
         ...form,
-        price: currentDates.price,
+        [e.target.name]: e.target.value,
+      });
+    } else if (e.target.name === "dia") {
+      let currentPrice = location
+        .find((el) => el.location === form.locacion)
+        .info.find((el) => el.date === e.target.value);
+      setForm({
+        ...form,
+        price: currentPrice.price,
         [e.target.name]: e.target.value,
       });
     } else {
@@ -89,6 +78,10 @@ const Payment = () => {
       cantidad: form.cantidad + 1,
     });
   };
+
+  useEffect(() => {
+    setLocation(manageDataLocations(DATA));
+  }, []);
 
   return (
     <section className="section__ticketPurchase">
@@ -143,9 +136,9 @@ const Payment = () => {
                 required
               >
                 <option value=""></option>
-                {data?.map((el, i) => (
-                  <option key={i} value={el.locacion}>
-                    {el.locacion}
+                {location?.map((el, i) => (
+                  <option key={i} value={el.location}>
+                    {el.location}
                   </option>
                 ))}
               </select>

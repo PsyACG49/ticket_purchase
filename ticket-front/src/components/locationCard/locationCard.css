@@ -31,4 +31,5 @@
 .schedule .schedule__address {
   color: var(--white);
   font-size: 1.2rem;
+  color: var(--primary);
 }
