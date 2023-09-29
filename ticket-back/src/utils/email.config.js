@@ -22,7 +22,7 @@ let transporter = nodemailer.createTransport({
 export const sendEmail = async (email, subject, html) => {
   try {
     await transporter.sendMail({
-      from: `SALOLOYO ACADEMY <${NODEMAILER_HOST}>`,
+      from: `SALOLOYO ACADEMY <${NODEMAILER_USER}>`,
       to: email,
       subject,
       html,
