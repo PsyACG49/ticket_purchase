@@ -6,6 +6,8 @@ export const manageDataLocations = (data) => {
         dates.push({
           date: element.date,
           price: element.price,
+          address: element.address,
+          schedule: element.schedule,
         });
       }
     });

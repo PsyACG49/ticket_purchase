@@ -15,6 +15,8 @@ const initialForm = {
   telefono: "",
   cantidad: 0,
   price: 0,
+  address: "",
+  horario: "",
 };
 
 const Payment = () => {
@@ -24,13 +26,16 @@ const Payment = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const res = await fetch("http://localhost:3000/create-checkout-session", {
-      method: "POST",
-      body: JSON.stringify(form),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    const res = await fetch(
+      "http://localhost:3000/api/saloloyo/v1/payment/create-checkout-session",
+      {
+        method: "POST",
+        body: JSON.stringify(form),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
     const data = await res.json();
     setForm(initialForm);
     window.location.href = data.url;
@@ -53,6 +58,8 @@ const Payment = () => {
       setForm({
         ...form,
         price: currentPrice.price,
+        address: currentPrice.address,
+        horario: currentPrice.schedule,
         [e.target.name]: e.target.value,
       });
     } else {
