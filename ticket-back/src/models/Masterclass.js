@@ -5,6 +5,8 @@ const masterclassSchema = new Schema({
   location: String,
   date: String,
   price: Number,
+  address: String,
+  schedule: String,
 });
 
 export default model("Masterclass", masterclassSchema);

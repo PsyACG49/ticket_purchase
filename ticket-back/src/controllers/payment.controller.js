@@ -1,13 +1,23 @@
 import Stripe from "stripe";
-import { STRIPE_KEY, STRIPE_WEBHOOK_KEY, NODEMAILER_USER } from "../config";
 import Order from "../models/Order";
+import { STRIPE_KEY, STRIPE_WEBHOOK_KEY } from "../config";
 import { getTemplate, sendEmail } from "../utils/email.config";
 
 const stripe = new Stripe(STRIPE_KEY);
 
 export const createSession = async (req, res) => {
-  const { nombres, apellido, locacion, dia, cantidad, price, correo } =
-    req.body;
+  const {
+    nombres,
+    apellido,
+    locacion,
+    dia,
+    cantidad,
+    price,
+    correo,
+    telefono,
+    address,
+    horario,
+  } = req.body;
 
   const session = await stripe.checkout.sessions.create({
     customer_email: `${correo}`,
@@ -16,7 +26,7 @@ export const createSession = async (req, res) => {
         price_data: {
           product_data: {
             name: "Masterclass",
-            description: `Super clase teclados a nombre de ${nombres} ${apellido} en ${locacion} el ${dia} `,
+            description: `Super clase teclados a nombre de ${nombres} ${apellido} en ${locacion} el ${dia}`,
           },
           currency: "mxn",
           unit_amount: price * 100,
@@ -24,6 +34,14 @@ export const createSession = async (req, res) => {
         quantity: cantidad,
       },
     ],
+    metadata: {
+      name: `${nombres} ${apellido}`,
+      location: locacion,
+      phone: telefono,
+      date: dia,
+      address,
+      schedule: horario,
+    },
     mode: "payment",
     success_url: "http://localhost:5173/success",
     cancel_url: "http://localhost:5173/checkout",
@@ -35,15 +53,16 @@ export const createSession = async (req, res) => {
 };
 
 //webhook
-
-const endpointSecret = STRIPE_WEBHOOK_KEY;
-
 export const createWebhook = async (request, response) => {
   let event;
   let sig = request.headers["stripe-signature"];
 
   try {
-    event = stripe.webhooks.constructEvent(request.body, sig, endpointSecret);
+    event = stripe.webhooks.constructEvent(
+      request.body,
+      sig,
+      STRIPE_WEBHOOK_KEY
+    );
 
     if (event.type === "checkout.session.completed") {
       const session = event.data.object;
@@ -52,20 +71,23 @@ export const createWebhook = async (request, response) => {
       );
 
       const newOrder = new Order({
-        name: session.customer_details.name,
+        name: session.metadata.name,
         email: session.customer_email,
-        location: "queretaro",
-        phone: 5555555555,
-        date: "12/12/12",
+        location: session.metadata.location,
+        phone: session.metadata.phone,
+        date: session.metadata.date,
         amount: line_items.amount_total,
         count: line_items.quantity,
+        schedule: session.metadata.schedule,
       });
 
       await newOrder.save();
       const template = getTemplate(
         newOrder.name,
         newOrder.date,
-        newOrder.location
+        newOrder.location,
+        session.metadata.address,
+        session.metadata.schedule
       );
       await sendEmail(newOrder.email, "Confirmacion de pago", template);
       // console.log(line_items);

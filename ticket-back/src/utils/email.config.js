@@ -32,7 +32,7 @@ export const sendEmail = async (email, subject, html) => {
   }
 };
 
-export const getTemplate = (name, date, location) => {
+export const getTemplate = (name, date, location, address, schedule) => {
   return `
   <section
   style="width:100%; height: 900px;"
@@ -54,8 +54,7 @@ export const getTemplate = (name, date, location) => {
     <p style="font-size: 20px; margin-buttom: 20px; color: #fff;">${date}</p>
     <p style="font-size: 20px; margin-buttom: 20px; color: #fff;">${location.toUpperCase()}</p>
     <p style="font-size: 18px; margin-buttom: 20px; color: #fff;">
-      Favor de presentarse de 10 a 15 min antes en direccion #22 col. tal
-      CCDMX la entrada sera apartir de las 12:20pm
+      Favor de presentarse de 10 a 15 min antes en ${address} la entrada sera apartir de las ${schedule}
     </p>
     <img
       style="width: 300px; height: 300px; border-radius: 50%"
@@ -64,5 +63,14 @@ export const getTemplate = (name, date, location) => {
     />
   </div>
 </section>
+      `;
+};
+
+export const getTemplateForm = (name, phone, email, message) => {
+  return `
+        El usuario ${name}
+        correo: ${email}
+        telefono: ${phone}
+        mensaje: ${message}
       `;
 };
