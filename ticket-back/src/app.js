@@ -29,4 +29,15 @@ app.use("/api/saloloyo/v1/testimonials", testimonialRoutes);
 app.use("/api/saloloyo/v1/courses", courseRoutes);
 app.use("/api/saloloyo/v1/masterclasses", masterclassRoutes);
 
+app.use((err, req, res, next) => {
+  const errorStatus = err.status || 500;
+  const errorMessage = err.message || "Something was wrong";
+  return res.status(errorStatus).json({
+    success: false,
+    status: errorStatus,
+    message: errorMessage,
+    stack: err.stack,
+  });
+});
+
 export default app;

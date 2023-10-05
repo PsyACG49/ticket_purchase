@@ -1,7 +1,7 @@
 import { sendEmail, getTemplateForm } from "../utils/email.config";
 import { NODEMAILER_USER } from "../config";
 
-export const sendMeEmail = async (req, res) => {
+export const sendMeEmail = async (req, res, next) => {
   const { name, email, phone, message } = req.body;
   try {
     const template = getTemplateForm(name, phone, email, message);
@@ -11,6 +11,6 @@ export const sendMeEmail = async (req, res) => {
       message: "email sended",
     });
   } catch (error) {
-    console.log(error);
+    next(error);
   }
 };

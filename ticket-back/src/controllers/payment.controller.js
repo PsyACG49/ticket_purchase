@@ -5,7 +5,7 @@ import { getTemplate, sendEmail } from "../utils/email.config";
 
 const stripe = new Stripe(STRIPE_KEY);
 
-export const createSession = async (req, res) => {
+export const createSession = async (req, res, next) => {
   const {
     nombres,
     apellido,
@@ -18,51 +18,50 @@ export const createSession = async (req, res) => {
     address,
     horario,
   } = req.body;
-
-  const session = await stripe.checkout.sessions.create({
-    customer_email: `${correo}`,
-    line_items: [
-      {
-        price_data: {
-          product_data: {
-            name: "Masterclass",
-            description: `Super clase teclados a nombre de ${nombres} ${apellido} en ${locacion} el ${dia}`,
+  try {
+    const session = await stripe.checkout.sessions.create({
+      customer_email: `${correo}`,
+      line_items: [
+        {
+          price_data: {
+            product_data: {
+              name: "Masterclass",
+              description: `Super clase teclados a nombre de ${nombres} ${apellido} en ${locacion} el ${dia}`,
+            },
+            currency: "mxn",
+            unit_amount: price * 100,
           },
-          currency: "mxn",
-          unit_amount: price * 100,
+          quantity: cantidad,
         },
-        quantity: cantidad,
+      ],
+      metadata: {
+        name: `${nombres} ${apellido}`,
+        location: locacion,
+        phone: telefono,
+        date: dia,
+        address,
+        schedule: horario,
       },
-    ],
-    metadata: {
-      name: `${nombres} ${apellido}`,
-      location: locacion,
-      phone: telefono,
-      date: dia,
-      address,
-      schedule: horario,
-    },
-    mode: "payment",
-    success_url: "http://localhost:5173/success",
-    cancel_url: "http://localhost:5173/checkout",
-  });
+      mode: "payment",
+      success_url: "http://localhost:5173/success",
+      cancel_url: "http://localhost:5173/checkout",
+    });
 
-  return res.json({
-    url: session.url,
-  });
+    return res.json({
+      url: session.url,
+    });
+  } catch (error) {
+    next(error);
+  }
 };
 
 //webhook
-export const createWebhook = async (request, response) => {
+export const createWebhook = async (req, res) => {
   let event;
-  let sig = request.headers["stripe-signature"];
+  let sig = req.headers["stripe-signature"];
 
   try {
-    event = stripe.webhooks.constructEvent(
-      request.body,
-      sig,
-      STRIPE_WEBHOOK_KEY
-    );
+    event = stripe.webhooks.constructEvent(req.body, sig, STRIPE_WEBHOOK_KEY);
 
     if (event.type === "checkout.session.completed") {
       const session = event.data.object;
@@ -90,14 +89,11 @@ export const createWebhook = async (request, response) => {
         session.metadata.schedule
       );
       await sendEmail(newOrder.email, "Confirmacion de pago", template);
-      // console.log(line_items);
-      // console.log(session);
     }
   } catch (err) {
-    console.log(err);
-    response.status(400).send(`Webhook Error: ${err.message}`);
+    res.status(400).send(`Webhook Error: ${err.message}`);
     return;
   }
 
-  response.send();
+  res.send();
 };
