@@ -1,94 +1,19 @@
-import { useEffect, useState } from "react";
-import { manageDataLocations } from "../../utils/form";
+import { usePayment } from "../../hooks/usePayment";
 
-import DATA from "../../utils/locations.json";
 import IMG from "../../assets/img6.jpg";
 
 import "./payment.css";
 
-const initialForm = {
-  nombres: "",
-  apellido: "",
-  locacion: "",
-  dia: "",
-  correo: "",
-  telefono: "",
-  cantidad: 0,
-  price: 0,
-  address: "",
-  horario: "",
-};
-
 const Payment = () => {
-  const [form, setForm] = useState(initialForm);
-  const [location, setLocation] = useState([]);
-  const [dates, setDates] = useState([]);
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const res = await fetch(
-      "http://localhost:3000/api/saloloyo/v1/payment/create-checkout-session",
-      {
-        method: "POST",
-        body: JSON.stringify(form),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
-    const data = await res.json();
-    setForm(initialForm);
-    window.location.href = data.url;
-  };
-
-  const handleChange = (e) => {
-    if (e.target.name === "locacion") {
-      const currentDates = location.find(
-        (el) => el.location === e.target.value
-      );
-      setDates(currentDates.info.map((el) => el.date));
-      setForm({
-        ...form,
-        [e.target.name]: e.target.value,
-      });
-    } else if (e.target.name === "dia") {
-      let currentPrice = location
-        .find((el) => el.location === form.locacion)
-        .info.find((el) => el.date === e.target.value);
-      setForm({
-        ...form,
-        price: currentPrice.price,
-        address: currentPrice.address,
-        horario: currentPrice.schedule,
-        [e.target.name]: e.target.value,
-      });
-    } else {
-      setForm({
-        ...form,
-        [e.target.name]: e.target.value,
-      });
-    }
-  };
-
-  const handleless = () => {
-    if (form.cantidad >= 1) {
-      setForm({
-        ...form,
-        cantidad: form.cantidad - 1,
-      });
-    }
-  };
-
-  const handleMore = () => {
-    setForm({
-      ...form,
-      cantidad: form.cantidad + 1,
-    });
-  };
-
-  useEffect(() => {
-    setLocation(manageDataLocations(DATA));
-  }, []);
+  const {
+    form,
+    location,
+    dates,
+    handleSubmit,
+    handleChange,
+    handleMore,
+    handleless,
+  } = usePayment();
 
   return (
     <section className="section__ticketPurchase">

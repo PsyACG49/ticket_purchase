@@ -1,18 +1,21 @@
 import TestimonialCard from "../testimonialCard/TestimonialCard";
+import { getTestimonials } from "../../services/testimonials";
+import { useFetchData } from "../../hooks/useFetchData";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
 
-import TESTIM from "../../utils/testimonials.json";
-
+import LOADER from "../../assets/loader.svg";
 import IMG from "../../assets/img4.jpg";
 import "./testimonials.css";
 
 import { Pagination, Autoplay } from "swiper/modules";
 
 const Testimonials = () => {
+  const { data, loading, error } = useFetchData(getTestimonials);
+
   return (
     <section className="section__testimonials">
       <h3 className="testimonials__title">
@@ -34,11 +37,17 @@ const Testimonials = () => {
             modules={[Pagination, Autoplay]}
             className="slider__container"
           >
-            {TESTIM.map((el) => (
-              <SwiperSlide key={el.id}>
-                <TestimonialCard testimonialData={el} />
-              </SwiperSlide>
-            ))}
+            {loading ? (
+              <img src={LOADER} alt="loader" />
+            ) : error ? (
+              <p className="errorMessage">Content not found</p>
+            ) : (
+              data.map((el) => (
+                <SwiperSlide key={el.id}>
+                  <TestimonialCard testimonialData={el} />
+                </SwiperSlide>
+              ))
+            )}
           </Swiper>
         </div>
         <div className="testimonials__image">

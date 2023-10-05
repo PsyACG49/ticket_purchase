@@ -1,11 +1,14 @@
 import CourseCard from "../courseCard/CourseCard";
+import { getCourses } from "../../services/courses";
+import { useFetchData } from "../../hooks/useFetchData";
 
-import COURSES from "../../utils/courses.json";
 import IMG from "../../assets/ilustration.svg";
-
+import LOADER from "../../assets/loader.svg";
 import "./courses.css";
 
 const Courses = () => {
+  const { data, loading, error } = useFetchData(getCourses);
+
   return (
     <section className="section__courses">
       <h3 className="courses__title">
@@ -24,9 +27,13 @@ const Courses = () => {
           />
         </div>
         <div className="courses__list">
-          {COURSES.map((el) => (
-            <CourseCard key={el.id} courseData={el} />
-          ))}
+          {loading ? (
+            <img src={LOADER} alt="loader" />
+          ) : error ? (
+            <p className="errorMessage">Content not found</p>
+          ) : (
+            data.map((el) => <CourseCard key={el.id} courseData={el} />)
+          )}
         </div>
       </div>
     </section>

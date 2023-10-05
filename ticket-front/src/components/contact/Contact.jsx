@@ -1,9 +1,14 @@
+import { useContact } from "../../hooks/useContact";
+
 import LOADER from "../../assets/loader.svg";
 import IMG from "../../assets/img1.jpg";
 
 import "./contact.css";
 
 const Contact = () => {
+  const { form, loader, message, error, handleChange, handleSubmit } =
+    useContact();
+
   return (
     <section className="section__contact">
       <div className="container__contact">
@@ -17,9 +22,17 @@ const Contact = () => {
           <div className="main__image">
             <img src={IMG} alt="teclado musical" className="image__img" />
           </div>
-          <form className="main__form">
+          <form className="main__form" onSubmit={handleSubmit}>
             <label htmlFor="name">
-              <input type="text" name="name" id="name" placeholder="Nombre" />
+              <input
+                type="text"
+                name="name"
+                id="name"
+                placeholder="Nombre"
+                value={form.name}
+                onChange={handleChange}
+                required
+              />
             </label>
             <label htmlFor="email">
               <input
@@ -27,6 +40,9 @@ const Contact = () => {
                 name="email"
                 id="email"
                 placeholder="correo@correo.com"
+                value={form.email}
+                onChange={handleChange}
+                required
               />
             </label>
             <label htmlFor="phone">
@@ -35,6 +51,9 @@ const Contact = () => {
                 name="phone"
                 id="phone"
                 placeholder="+55 55000000"
+                value={form.phone}
+                onChange={handleChange}
+                required
               />
             </label>
             <label htmlFor="message">
@@ -44,14 +63,18 @@ const Contact = () => {
                 cols="30"
                 rows="10"
                 placeholder="mensaje"
+                value={form.message}
+                onChange={handleChange}
+                required
               ></textarea>
             </label>
             <button className="form__btn">Enviar</button>
           </form>
         </div>
         <div className="contact__success">
-          <p>Mensaje Enviado</p>
-          <img src={LOADER} alt="loader blanco" />
+          {error && <p>Not message sended</p>}
+          {message && <p>Mensaje Enviado</p>}
+          {loader && <img src={LOADER} alt="loader blanco" />}
         </div>
       </div>
     </section>

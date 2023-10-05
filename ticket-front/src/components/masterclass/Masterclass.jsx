@@ -1,12 +1,15 @@
 import { Link } from "react-router-dom";
+import { useFetchData } from "../../hooks/useFetchData";
 import LocationCard from "../locationCard/LocationCard";
+import { getMasterclasses } from "../../services/masterclasses";
 
-import DATES from "../../utils/locations.json";
+import LOADER from "../../assets/loader.svg";
 import IMG from "../../assets/teaching.svg";
 
 import "./masterclass.css";
 
 const Masterclass = () => {
+  const { data, loading, error } = useFetchData(getMasterclasses);
   return (
     <section className="section__masterclass">
       <div className="masterclass__hero">
@@ -37,9 +40,13 @@ const Masterclass = () => {
           </i>
         </h3>
         <div className="schedules__list">
-          {DATES.map((el) => (
-            <LocationCard key={el.id} dataLocation={el} />
-          ))}
+          {loading ? (
+            <img src={LOADER} alt="loader" />
+          ) : error ? (
+            <p className="errorMessage">Content not found</p>
+          ) : (
+            data.map((el) => <LocationCard key={el.id} dataLocation={el} />)
+          )}
         </div>
 
         <div className="masterclass__get">
