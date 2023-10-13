@@ -1,7 +1,5 @@
 import { usePayment } from "../../hooks/usePayment";
 
-import IMG from "../../assets/img6.jpg";
-
 import "./payment.css";
 
 const Payment = () => {
@@ -20,7 +18,7 @@ const Payment = () => {
       <div className="container__ticketPurchase">
         <div className="ticketPurchase__image">
           <img
-            src={IMG}
+            src="https://i.ibb.co/LJjBLKt/img6.jpg"
             alt="tecladista fondo luz azul"
             className="image__img"
           />

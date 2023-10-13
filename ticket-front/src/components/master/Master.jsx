@@ -1,12 +1,11 @@
 import "./master.css";
-import IMG from "../../assets/img2.jpg";
 import { Link } from "react-router-dom";
 
 const Master = () => {
   return (
     <section className="section__master">
       <img
-        src={IMG}
+        src={"https://i.ibb.co/C0RcK4R/motage2.jpg"}
         alt="manos sobre uin teclado musical"
         className="master__image"
       />

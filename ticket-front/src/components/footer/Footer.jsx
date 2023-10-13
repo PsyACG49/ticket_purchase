@@ -10,8 +10,8 @@ const Footer = () => {
         <div className="top__colum">
           <h3 className="colum__title">Contacto</h3>
           <ul className="colum__list">
-            <li className="list__item">correo@correo.com</li>
-            <li className="list__item">55 55000000</li>
+            <li className="list__item">info@saloloyo.com</li>
+            <li className="list__item">+1 (210) 929-6309</li>
           </ul>
         </div>
         <div className="top__colum">
@@ -24,11 +24,19 @@ const Footer = () => {
         <div className="top__colum">
           <h3 className="colum__title">Redes</h3>
           <div className="colum__socials">
-            <a href="#" className="socials__item" target="blank">
+            <a
+              href="https://www.facebook.com/saloloyomusic?mibextid=LQQJ4d"
+              className="socials__item"
+              target="blank"
+            >
               <FaFacebookSquare />
             </a>
 
-            <a href="#" className="socials__item" target="blank">
+            <a
+              href="https://www.instagram.com/saloloyo/?igshid=MzRlODBiNWFlZA%3D%3D"
+              className="socials__item"
+              target="blank"
+            >
               <FaInstagramSquare />
             </a>
           </div>

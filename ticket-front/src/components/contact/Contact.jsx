@@ -1,7 +1,6 @@
 import { useContact } from "../../hooks/useContact";
 
 import LOADER from "../../assets/loader.svg";
-import IMG from "../../assets/img1.jpg";
 
 import "./contact.css";
 
@@ -20,7 +19,11 @@ const Contact = () => {
         </p>
         <div className="contact__main">
           <div className="main__image">
-            <img src={IMG} alt="teclado musical" className="image__img" />
+            <img
+              src="https://i.ibb.co/LrYL705/montage3.png"
+              alt="teclado musical"
+              className="image__img"
+            />
           </div>
           <form className="main__form" onSubmit={handleSubmit}>
             <label htmlFor="name">

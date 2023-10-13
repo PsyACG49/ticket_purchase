@@ -30,11 +30,19 @@ const Header = () => {
             </li>
           </ul>
           <div className="nav__socilas">
-            <a href="#" className="socials__item" target="blank">
+            <a
+              href="https://www.facebook.com/saloloyomusic?mibextid=LQQJ4d"
+              className="socials__item"
+              target="blank"
+            >
               <FaFacebookSquare />
             </a>
 
-            <a href="#" className="socials__item" target="blank">
+            <a
+              href="https://www.instagram.com/saloloyo/?igshid=MzRlODBiNWFlZA%3D%3D"
+              className="socials__item"
+              target="blank"
+            >
               <FaInstagramSquare />
             </a>
           </div>

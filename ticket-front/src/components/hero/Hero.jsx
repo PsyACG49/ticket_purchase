@@ -1,4 +1,3 @@
-import IMG from "../../assets/img9.jpg";
 import SALO from "../../assets/saloloyo.jpg";
 import "./hero.css";
 
@@ -17,7 +16,11 @@ const Hero = () => {
           <h2 className="content__text">Music Academy</h2>
         </div>
       </div>
-      <img src={IMG} alt="teclado musical" className="hero__image" />
+      <img
+        src={"https://i.ibb.co/tDfDG83/montage7.jpg"}
+        alt="teclado musical"
+        className="hero__image"
+      />
     </section>
   );
 };
