@@ -23,13 +23,14 @@ const Masterclass = () => {
           <img src={IMG} alt="persona dando clase" className="image__img" />
         </div>
         <p className="masterclasss__text">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat
-          asperiores repudiandae at veniam assumenda. Voluptatum non cum atque!
-          Provident, corporis explicabo facilis cum quibusdam consectetur
-          eligendi laudantium? Vel, ducimus laudantium. Lorem ipsum dolor sit
-          amet consectetur adipisicing elit. Quam officiis omnis optio
-          architecto aspernatur quia odit beatae, ratione vero porro, officia
-          animi delectus nesciunt natus harum iure modi sint ipsum.
+          La masterclass ❝Los 7 pasos para llegar a los grandes escenarios❞ de
+          Salo Loyo, tecladista de Luis Miguel, es una experiencia inspiradora.
+          Salo comparte sabiduría y pasión, desglosando los secretos de la
+          música y el espectáculo. Esta clase magistral es una guía invaluable
+          para aspirantes a artistas, proporcionando tanto conocimientos
+          técnicos como emocionales para triunfar en la industria musical. Si
+          sueñas con el escenario, esta masterclass te llevará un paso más
+          cerca.
         </p>
       </div>
 

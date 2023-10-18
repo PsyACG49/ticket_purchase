@@ -22,7 +22,7 @@ const Testimonials = () => {
         <b className="testimonials__title-2">NUESTROS</b> TESTIMONIOS
       </h3>
       <p className="testimonials__subtitle">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        Conoce las experincia y opinion de algunos usuarios
       </p>
       <div className="container__testimonials">
         <div className="testimonials__slider">

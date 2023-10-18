@@ -1,4 +1,5 @@
 export const manageDataLocations = (data) => {
+  console.log(data);
   let newLocationsArray = data.reduce((acc, item) => {
     let dates = [];
     data.forEach((element) => {
@@ -8,6 +9,7 @@ export const manageDataLocations = (data) => {
           price: element.price,
           address: element.address,
           schedule: element.schedule,
+          active: element.active,
         });
       }
     });
@@ -25,6 +27,8 @@ export const manageDataLocations = (data) => {
     hash[current.location] = true;
     return exists;
   });
+
+  console.log(fil);
 
   return fil;
 };

@@ -19,7 +19,7 @@ const initialForm = {
 
 export const usePayment = () => {
   const { data } = useFetchData(getMasterclasses);
-  const location = manageDataLocations(data);
+  const location = data.filter((el) => el.active === true);
   const [form, setForm] = useState(initialForm);
   const [dates, setDates] = useState([]);
 
@@ -35,15 +35,13 @@ export const usePayment = () => {
       const currentDates = location.find(
         (el) => el.location === e.target.value
       );
-      setDates(currentDates.info.map((el) => el.date));
+      setDates([currentDates.date]);
       setForm({
         ...form,
         [e.target.name]: e.target.value,
       });
     } else if (e.target.name === "dia") {
-      let currentPrice = location
-        .find((el) => el.location === form.locacion)
-        .info.find((el) => el.date === e.target.value);
+      let currentPrice = location.find((el) => el.location === form.locacion);
       setForm({
         ...form,
         price: currentPrice.price,

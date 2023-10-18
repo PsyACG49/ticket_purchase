@@ -7,6 +7,7 @@ const masterclassSchema = new Schema({
   price: Number,
   address: String,
   schedule: String,
+  active: Boolean,
 });
 
 export default model("Masterclass", masterclassSchema);

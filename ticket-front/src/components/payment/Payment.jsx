@@ -135,10 +135,10 @@ const Payment = () => {
               </div>
             </div>
             <div className="form__price">
-              <span className="price__cost">{`Costo: $${form.price}`}</span>
+              <span className="price__cost">{`Costo: $${form.price}.00`}</span>
               <span className="price__total">{`Total: $${
                 form.price * form.cantidad
-              }`}</span>
+              }.00`}</span>
             </div>
           </div>
 

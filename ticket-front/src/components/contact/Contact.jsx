@@ -15,7 +15,7 @@ const Contact = () => {
           <i>CONTACTANOS</i>
         </h3>
         <p className="contact__subtitle">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit
+          Para mas informacion o detalles envianos un mensaje por este medio
         </p>
         <div className="contact__main">
           <div className="main__image">

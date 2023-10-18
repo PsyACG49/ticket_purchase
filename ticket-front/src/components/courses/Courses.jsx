@@ -15,7 +15,7 @@ const Courses = () => {
         NUESTROS <b className="courses__title-2">CURSOS</b>
       </h3>
       <p className="courses__subtitle">
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+        Proximamente no te pierdas el lanzamiento de nuestros cursos
       </p>
       <div className="container__courses">
         <div className="courses__image">
